@@ -10,6 +10,7 @@ function App() {
   const [searchData, setSearchData] = useState([]);
   const [visible, setVisible] = useState(16);
 
+  //Fetching the data
   useEffect(() => {
     (async () => {
       let programData;
@@ -27,6 +28,7 @@ function App() {
     })();
   }, []);
 
+  //Handling the searchbar
   const searchHandler = (e) => {
     if (e.target.value === "") {
       setProgram(searchData);
@@ -43,6 +45,7 @@ function App() {
     setSearchTerm(e.target.value);
   };
 
+  //Handling loadmore button
   const handleMore = () => {
     setVisible(visible + 12);
   };
@@ -50,6 +53,7 @@ function App() {
   return (
     <div className="App">
       <div className="main-container">
+        {/* Navbar starts here */}
         <div className="navbar">
           <Navbar bg="dark" variant="dark">
             <Container>
@@ -65,9 +69,10 @@ function App() {
             </Container>
           </Navbar>
         </div>
-
+        {/* Navbar ends here */}
         <div className="description-box">
           <>
+            {/* Description card starts here */}
             <div className="description-content">
               <h2 style={{ fontFamily: "cursive", color: "rgb(26, 0, 26)" }}>
                 Events
@@ -94,6 +99,9 @@ function App() {
             <img src={Image1} alt="octopus" width="300px" height="250px" />
           </div>
         </div>
+        {/* Description card ends here */}
+
+        {/* Search-bar starts here */}
         <div className="main-search">
           <div className="search-bar">
             <h5>Search</h5>
@@ -115,6 +123,9 @@ function App() {
             </select>
           </div>
         </div>
+        {/* Search-bar starts here */}
+
+        {/* Cards starts here */}
         <div className="original-conatiner">
           <h2>250+ Events</h2>
           <div className="main-cards-container">
@@ -125,11 +136,15 @@ function App() {
             </div>
           </div>
         </div>
+        {/* Cards starts here */}
+
+        {/* Loadmore starts here */}
         <div className="loadmore">
           {visible < program.length && (
             <button onClick={handleMore}>Load more</button>
           )}
         </div>
+        {/* Loadmore starts here */}
       </div>
     </div>
   );
